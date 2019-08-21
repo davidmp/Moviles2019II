@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     String valorB="";
     char operador=' ';
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
