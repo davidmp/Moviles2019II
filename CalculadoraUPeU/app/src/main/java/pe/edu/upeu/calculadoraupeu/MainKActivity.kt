@@ -16,6 +16,7 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
     internal var valorB = ""
     internal var operador = ' '
     lateinit var txtResultado:EditText
+    internal var resultado:Float?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,10 +56,60 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
         btnSuma!!.setOnClickListener(this)
         btnResta!!.setOnClickListener(this)
         btnDivision!!.setOnClickListener(this)
-        btnMultiplicacion.setOnClickListener(this)
-        btnIgual.setOnClickListener(this)
+        btnMultiplicacion!!.setOnClickListener(this)
+        btnIgual!!.setOnClickListener(this)
+
     }
+
     override fun onClick(v:View){
+        when(v?.id){
+            R.id.button18->{ txtResultado.setText(txtResultado.text.toString()+"1") }
+            R.id.button19->{ txtResultado.setText(txtResultado.text.toString()+"2") }
+            R.id.button20->{ txtResultado.setText(txtResultado.text.toString()+"3") }
+            R.id.button14->{ txtResultado.setText(txtResultado.text.toString()+"4") }
+            R.id.button15->{ txtResultado.setText(txtResultado.text.toString()+"5") }
+            R.id.button16->{ txtResultado.setText(txtResultado.text.toString()+"6") }
+            R.id.button2->{ txtResultado.setText(txtResultado.text.toString()+"7") }
+            R.id.button3->{ txtResultado.setText(txtResultado.text.toString()+"8") }
+            R.id.button4->{ txtResultado.setText(txtResultado.text.toString()+"9") }
+            R.id.button22->{ txtResultado.setText(txtResultado.text.toString()+"0") }
+            R.id.button->{ txtResultado.setText("") }
+            R.id.button23->{ if(txtResultado.text.toString().contains(".")==true){
+                    txtResultado.setText(txtResultado.text.toString()+"")
+                    }else{
+                    txtResultado.setText(txtResultado.text.toString()+".")
+                }
+            }
+            R.id.button25->{
+                valorA=txtResultado.text.toString()
+                txtResultado.setText("")
+                operador = '+'
+            }
+            R.id.button21->{
+                valorA=txtResultado.text.toString()
+                txtResultado.setText("")
+                operador = '-'
+            }
+            R.id.button17->{
+                valorA=txtResultado.text.toString()
+                txtResultado.setText("")
+                operador = '/'
+            }
+            R.id.button5->{
+                valorA=txtResultado.text.toString()
+                txtResultado.setText("")
+                operador = '*'
+            }
+            R.id.button24->{
+                when(operador){
+                    '+'->{resultado=valorA?.toFloat() }
+                    '-'->{ }
+                    '/'->{ }
+                    '*'->{ }
+                }
+            }
+        }
+
         Log.v("VER", "Si Ingresa")
     }
 
