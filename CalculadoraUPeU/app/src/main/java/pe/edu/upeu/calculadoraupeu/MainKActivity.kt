@@ -41,7 +41,7 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
 
         val btnMultiplicacion = findViewById<View>(R.id.button17) as Button
         val btnIgual = findViewById<View>(R.id.button24) as Button
-
+        txtResultado.setText("")
         btnBorrar!!.setOnClickListener(this)
         btn1!!.setOnClickListener(this)
         btn2!!.setOnClickListener(this)
@@ -74,10 +74,16 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
             R.id.button3->{ txtResultado.setText(txtResultado.text.toString()+"8") }
             R.id.button4->{ txtResultado.setText(txtResultado.text.toString()+"9") }
             R.id.button22->{ txtResultado.setText(txtResultado.text.toString()+"0") }
-            R.id.button->{ txtResultado.setText("")
+            R.id.button->{
+                if(txtResultado.text.toString().length<=1 ){
+                txtResultado.setText("")
                 valorA=""
                 resultado=0f
-                operador=' '
+                operador=' '}else{
+                    val temp=txtResultado.text.toString().substring(0,txtResultado.text.toString().length-1)
+                    txtResultado.setText(temp)
+                }
+
             }
             R.id.button23->{ if(txtResultado.text.toString().contains(".")==true){
                     txtResultado.setText(txtResultado.text.toString()+"")
@@ -107,16 +113,12 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
             }
             R.id.button24->{
                 when(operador){
-                    '+'->{resultado=valorA?.toFloat()!!+txtResultado.text.toString().toFloat()
-                        txtResultado.setText(resultado.toString())
-                        }
-                    '-'->{ resultado=valorA?.toFloat()!!-txtResultado.text.toString().toFloat()
-                        txtResultado.setText(resultado.toString())}
-                    '/'->{resultado=valorA?.toFloat()!!/txtResultado.text.toString().toFloat()
-                        txtResultado.setText(resultado.toString()) }
-                    '*'->{ resultado=valorA?.toFloat()!!*txtResultado.text.toString().toFloat()
-                        txtResultado.setText(resultado.toString())}
+                    '+'->{resultado=valorA?.toFloat()!!+txtResultado.text.toString().toFloat()}
+                    '-'->{resultado=valorA?.toFloat()!!-txtResultado.text.toString().toFloat()}
+                    '/'->{resultado=valorA?.toFloat()!!/txtResultado.text.toString().toFloat()}
+                    '*'->resultado=valorA?.toFloat()!!*txtResultado.text.toString().toFloat()}
                 }
+                txtResultado.setText(resultado.toString())
             }
         }
 
