@@ -13,10 +13,10 @@ import android.widget.EditText
  */
 class MainKActivity :AppCompatActivity(),View.OnClickListener {
     internal var valorA = ""
-    internal var valorB = ""
+
     internal var operador = ' '
     lateinit var txtResultado:EditText
-    internal var resultado:Float?=null
+    internal var resultado:Float?=0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +37,9 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
         val btnPunto = findViewById<View>(R.id.button23) as Button
         val btnSuma = findViewById<View>(R.id.button25) as Button
         val btnResta = findViewById<View>(R.id.button21) as Button
-        val btnDivision = findViewById<View>(R.id.button17) as Button
-        val btnMultiplicacion = findViewById<View>(R.id.button5) as Button
+        val btnDivision = findViewById<View>(R.id.button5) as Button
+
+        val btnMultiplicacion = findViewById<View>(R.id.button17) as Button
         val btnIgual = findViewById<View>(R.id.button24) as Button
 
         btnBorrar!!.setOnClickListener(this)
@@ -73,7 +74,11 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
             R.id.button3->{ txtResultado.setText(txtResultado.text.toString()+"8") }
             R.id.button4->{ txtResultado.setText(txtResultado.text.toString()+"9") }
             R.id.button22->{ txtResultado.setText(txtResultado.text.toString()+"0") }
-            R.id.button->{ txtResultado.setText("") }
+            R.id.button->{ txtResultado.setText("")
+                valorA=""
+                resultado=0f
+                operador=' '
+            }
             R.id.button23->{ if(txtResultado.text.toString().contains(".")==true){
                     txtResultado.setText(txtResultado.text.toString()+"")
                     }else{
@@ -93,19 +98,24 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
             R.id.button17->{
                 valorA=txtResultado.text.toString()
                 txtResultado.setText("")
-                operador = '/'
+                operador = '*'
             }
             R.id.button5->{
                 valorA=txtResultado.text.toString()
                 txtResultado.setText("")
-                operador = '*'
+                operador = '/'
             }
             R.id.button24->{
                 when(operador){
-                    '+'->{resultado=valorA?.toFloat() }
-                    '-'->{ }
-                    '/'->{ }
-                    '*'->{ }
+                    '+'->{resultado=valorA?.toFloat()!!+txtResultado.text.toString().toFloat()
+                        txtResultado.setText(resultado.toString())
+                        }
+                    '-'->{ resultado=valorA?.toFloat()!!-txtResultado.text.toString().toFloat()
+                        txtResultado.setText(resultado.toString())}
+                    '/'->{resultado=valorA?.toFloat()!!/txtResultado.text.toString().toFloat()
+                        txtResultado.setText(resultado.toString()) }
+                    '*'->{ resultado=valorA?.toFloat()!!*txtResultado.text.toString().toFloat()
+                        txtResultado.setText(resultado.toString())}
                 }
             }
         }
