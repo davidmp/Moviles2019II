@@ -116,13 +116,15 @@ class MainKActivity :AppCompatActivity(),View.OnClickListener {
                     '+'->{resultado=valorA?.toFloat()!!+txtResultado.text.toString().toFloat()}
                     '-'->{resultado=valorA?.toFloat()!!-txtResultado.text.toString().toFloat()}
                     '/'->{resultado=valorA?.toFloat()!!/txtResultado.text.toString().toFloat()}
-                    '*'->resultado=valorA?.toFloat()!!*txtResultado.text.toString().toFloat()}
+                    '*'->{resultado=valorA?.toFloat()!!*txtResultado.text.toString().toFloat()}
                 }
                 txtResultado.setText(resultado.toString())
+                }
+
             }
+        Log.v("VER", "Si Ingresa")
         }
 
-        Log.v("VER", "Si Ingresa")
+
     }
 
-}

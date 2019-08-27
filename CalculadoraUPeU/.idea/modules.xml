@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CalculadoraUPeU.iml" filepath="$PROJECT_DIR$/CalculadoraUPeU.iml" />
+      <module fileurl="file://D:\DAVIDMP 2019\DESARROLLO 2019\DESARROLLO GIT\Moviles2019II\CalculadoraUPeU\CalculadoraUPeU.iml" filepath="D:\DAVIDMP 2019\DESARROLLO 2019\DESARROLLO GIT\Moviles2019II\CalculadoraUPeU\CalculadoraUPeU.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\DAVIDMP 2019\DESARROLLO 2019\DESARROLLO GIT\Moviles2019II\CalculadoraUPeU\app\app.iml" filepath="D:\DAVIDMP 2019\DESARROLLO 2019\DESARROLLO GIT\Moviles2019II\CalculadoraUPeU\app\app.iml" />
     </modules>
   </component>
 </project>
