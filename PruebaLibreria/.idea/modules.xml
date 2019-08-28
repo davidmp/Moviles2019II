@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PruebaLibreria.iml" filepath="$PROJECT_DIR$/PruebaLibreria.iml" />
+      <module fileurl="file://E:\DESARROLLO MOVILES\DESARROLLO\Moviles2019II\PruebaLibreria\PruebaLibreria.iml" filepath="E:\DESARROLLO MOVILES\DESARROLLO\Moviles2019II\PruebaLibreria\PruebaLibreria.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\DESARROLLO MOVILES\DESARROLLO\Moviles2019II\PruebaLibreria\app\app.iml" filepath="E:\DESARROLLO MOVILES\DESARROLLO\Moviles2019II\PruebaLibreria\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/materiald-release/materiald-release.iml" filepath="$PROJECT_DIR$/materiald-release/materiald-release.iml" />
+      <module fileurl="file://E:\DESARROLLO MOVILES\DESARROLLO\Moviles2019II\PruebaLibreria\materiald-release\materiald-release.iml" filepath="E:\DESARROLLO MOVILES\DESARROLLO\Moviles2019II\PruebaLibreria\materiald-release\materiald-release.iml" />
     </modules>
   </component>
 </project>

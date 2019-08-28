@@ -30,6 +30,11 @@
     </style>
 
     <style name="AppTheme.Orange" parent="BaseTheme.Orange">
+        <item name="buttonStyle">@style/PrimaryColoredButton</item>
+    </style>
+
+    <style name="PrimaryColoredButton" parent="Base.Widget.AppCompat.Button.Colored">
+        <item name="android:drawableBottom">@drawable/image_file</item>
     </style>
 
 </resources>
