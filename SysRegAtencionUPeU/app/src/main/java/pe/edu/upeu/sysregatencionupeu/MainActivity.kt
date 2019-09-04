@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_camera -> {
-                // Handle the camera action
+                supportFragmentManager.beginTransaction().replace(R.id.contenido,ChartFragment()).commit()
             }
             R.id.nav_gallery -> {
 
