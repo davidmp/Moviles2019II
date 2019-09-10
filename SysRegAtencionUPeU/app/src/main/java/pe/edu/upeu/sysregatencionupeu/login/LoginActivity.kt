@@ -10,12 +10,22 @@ import pe.edu.upeu.sysregatencionupeu.MainActivity
 
 class LoginActivity : AppCompatActivity(),LoginView {
 
+    private val presenter= LoginPresenter(this, LoginIteractor())
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        btnLogin.setOnClickListener { validateCredentials() }
     }
 
+    fun validateCredentials(){
+        presenter.validateCredentials(username.text.toString(),password.text.toString())
+    }
 
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
 
     override fun showProgresbar(){ progress.visibility=View.VISIBLE}
     override fun hideProgresbar(){progress.visibility=View.GONE}

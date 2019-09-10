@@ -13,8 +13,8 @@ class PrincipalActivity : AppCompatActivity() {
         setContentView(R.layout.activity_principal)
 
         val ImgBtn01:ImageButton=findViewById<ImageButton>(R.id.imageButton)
-        val ImgBtn02:ImageButton=findViewById<ImageButton>(R.id.imageButton)
-        val ImgBtn03:ImageButton=findViewById<ImageButton>(R.id.imageButton)
+        val ImgBtn02:ImageButton=findViewById<ImageButton>(R.id.imageButton2)
+        val ImgBtn03:ImageButton=findViewById<ImageButton>(R.id.imageButton3)
 
         ImgBtn01.setOnClickListener{
             v ->  intent= Intent(this,MainActivity::class.java)
