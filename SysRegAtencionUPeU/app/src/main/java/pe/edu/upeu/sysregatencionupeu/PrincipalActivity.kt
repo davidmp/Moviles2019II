@@ -20,7 +20,7 @@ class PrincipalActivity : AppCompatActivity() {
             v ->  intent= Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
-        
+
         ImgBtn02.setOnClickListener{view -> intent= Intent(this, LoginActivity::class.java)
         startActivity(intent)
         }
