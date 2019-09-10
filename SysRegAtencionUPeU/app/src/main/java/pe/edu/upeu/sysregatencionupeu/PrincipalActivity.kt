@@ -4,6 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageButton
+import pe.edu.upeu.sysregatencionupeu.login.LoginActivity
 
 class PrincipalActivity : AppCompatActivity() {
 
@@ -19,7 +20,10 @@ class PrincipalActivity : AppCompatActivity() {
             v ->  intent= Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
-
+        
+        ImgBtn02.setOnClickListener{view -> intent= Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        }
 
 
     }

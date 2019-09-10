@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SysRegAtencionUPeU.iml" filepath="$PROJECT_DIR$/SysRegAtencionUPeU.iml" />
+      <module fileurl="file://D:\DESARROLLO APLICACIONES MOVILES\DESARROLLO\Moviles2019II\SysRegAtencionUPeU\SysRegAtencionUPeU.iml" filepath="D:\DESARROLLO APLICACIONES MOVILES\DESARROLLO\Moviles2019II\SysRegAtencionUPeU\SysRegAtencionUPeU.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\DESARROLLO APLICACIONES MOVILES\DESARROLLO\Moviles2019II\SysRegAtencionUPeU\app\app.iml" filepath="D:\DESARROLLO APLICACIONES MOVILES\DESARROLLO\Moviles2019II\SysRegAtencionUPeU\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/materiald/materiald.iml" filepath="$PROJECT_DIR$/materiald/materiald.iml" />
+      <module fileurl="file://D:\DESARROLLO APLICACIONES MOVILES\DESARROLLO\Moviles2019II\SysRegAtencionUPeU\materiald\materiald.iml" filepath="D:\DESARROLLO APLICACIONES MOVILES\DESARROLLO\Moviles2019II\SysRegAtencionUPeU\materiald\materiald.iml" />
     </modules>
   </component>
 </project>
