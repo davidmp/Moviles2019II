@@ -24,7 +24,11 @@ class LoginIteractor {
     }
 
     fun validateCredential(username:String, pasword:String, listener: OnLoginFineshedListener){
-        listener.onSuccess()
+        if(username.equals("davidmp") && pasword.equals("123456")){
+            listener.onSuccess()
+        }else{
+            listener.onCredentialError()
+        }
     }
 
 }

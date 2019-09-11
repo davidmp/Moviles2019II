@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import pe.edu.upeu.sysregatencionupeu.R
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 import pe.edu.upeu.sysregatencionupeu.MainActivity
 
 class LoginActivity : AppCompatActivity(),LoginView {
@@ -20,6 +21,7 @@ class LoginActivity : AppCompatActivity(),LoginView {
 
     fun validateCredentials(){
         presenter.validateCredentials(username.text.toString(),password.text.toString())
+        txtMsg.visibility=View.GONE
     }
 
     override fun onDestroy() {
@@ -32,7 +34,9 @@ class LoginActivity : AppCompatActivity(),LoginView {
     override fun setUsernameError(){username.error="El campo usuario esta vacio"}
     override fun setPasswordError(){password.error="El campo password esta vacio"}
     override fun redirectHomeActivity(){startActivity(Intent(this,MainActivity::class.java))}
-    override fun validateCredential(){txtMsg.text="Los credenciales no son validos... intenete nuevamente!"
-    txtMsg.visibility=View.VISIBLE
+    override fun validateCredential(){
+        txtMsg.text="Los credenciales no son validos... intenete nuevamente!"
+        txtMsg.visibility=View.VISIBLE
+        hideProgresbar()
     }
 }
