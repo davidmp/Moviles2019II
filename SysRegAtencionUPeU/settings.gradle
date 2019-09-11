@@ -1,1 +1,1 @@
-include ':app', ':materiald'
+include ':app', ':materiald', ':dblibrary-release'
