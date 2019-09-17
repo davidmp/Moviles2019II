@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity(),LoginView {
     }
 
     fun validateCredentials(){
-        presenter.validateCredentials(username.text.toString(),password.text.toString())
+        presenter.validateCredentials(username.text.toString(),password.text.toString(),this)
         txtMsg.visibility=View.GONE
     }
 
@@ -36,6 +36,11 @@ class LoginActivity : AppCompatActivity(),LoginView {
     override fun redirectHomeActivity(){startActivity(Intent(this,MainActivity::class.java))}
     override fun validateCredential(){
         txtMsg.text="Los credenciales no son validos... intenete nuevamente!"
+        txtMsg.visibility=View.VISIBLE
+        hideProgresbar()
+    }
+    override fun setValidateCredentialPassw(){
+        txtMsg.text="Password Incorrecto ... intente nuevamente!"
         txtMsg.visibility=View.VISIBLE
         hideProgresbar()
     }

@@ -10,4 +10,5 @@ interface LoginView {
     fun setPasswordError()
     fun redirectHomeActivity()
     fun validateCredential()
+    fun setValidateCredentialPassw()
 }

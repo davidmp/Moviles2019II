@@ -9,6 +9,6 @@ import pe.edu.upeu.dblibrary.AssetsSQLite
  */
 class ConexionDB(context: Context) : AssetsSQLite(context, DATABASE_NAME){
 companion object {
-    const val DATABASE_NAME="dbxxx.db"
+    const val DATABASE_NAME="database.db"
 }
 }
