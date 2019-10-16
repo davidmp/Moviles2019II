@@ -9,7 +9,7 @@ part of 'api_service.dart';
 class _RestClient implements RestClient {
   _RestClient(this._dio) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    _dio.options.baseUrl = 'http://192.168.8.102:8080/';
+    _dio.options.baseUrl = 'http://172.22.90.32:6060/';
   }
 
   final Dio _dio;

@@ -6,7 +6,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'api_service.g.dart';
 
-@RestApi(baseUrl: "http://192.168.8.102:8080/")
+@RestApi(baseUrl: "http://172.22.90.32:6060/")
 abstract class RestClient {
   factory RestClient(Dio dio) = _RestClient;
 
