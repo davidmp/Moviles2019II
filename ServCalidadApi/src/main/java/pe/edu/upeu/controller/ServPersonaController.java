@@ -20,7 +20,7 @@ import pe.edu.upeu.service.ServPersonaService;
  * @author davidmp
  */
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/usersx")
 public class ServPersonaController {
      @Autowired
     private ServPersonaService personaService;   
@@ -29,6 +29,11 @@ public class ServPersonaController {
     public List<ServPersona> listUser() {
         return personaService.findAll();
     }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ServPersona login(String user, String passw) {
+        return personaService.login(user, passw);
+    }    
 
     @RequestMapping(value = "/pers", method = RequestMethod.POST)
     public ServPersona create(@RequestBody ServPersona user) {

@@ -18,4 +18,5 @@ public interface ServPersonaService {
     List<ServPersona> findAll();
 
     void delete(int id);   
+    ServPersona login(String user, String passw);
 }

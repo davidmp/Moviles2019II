@@ -60,5 +60,10 @@ public class ServPersonaServiceImpl implements ServPersonaService,UserDetailsSer
     public void delete(int id) {
         dao.deleteById(id);
     }
+
+    @Override
+    public ServPersona login(String user, String passw){
+        return dao.login(user, passw);
+    }
     
 }

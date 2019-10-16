@@ -7,6 +7,7 @@ package pe.edu.upeu.dao;
 
 
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pe.edu.upeu.model.ServPersona;
@@ -18,4 +19,6 @@ import pe.edu.upeu.model.ServPersona;
 @Repository
 public interface ServPersonaDao extends CrudRepository<ServPersona, Integer>{
     //ServPersona findByUsername(String nombre);
+    @Query("select p from ServPersona p  where p.usuario=?1 and p.clave=?2")
+    ServPersona login(String user, String passw);
 }
