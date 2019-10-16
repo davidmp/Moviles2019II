@@ -1,5 +1,6 @@
 import 'package:servicio_upeu/views/theme/appTheme.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeDrawer extends StatefulWidget {
   final AnimationController iconAnimationController;
@@ -18,10 +19,18 @@ class HomeDrawer extends StatefulWidget {
 
 class _HomeDrawerState extends State<HomeDrawer> {
   List<DrawerList> drawerList;
+  String usuario;
   @override
   void initState() {
     setdDrawerListArray();
     super.initState();
+    getUser();
+  }
+
+  void getUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    usuario = (prefs.getString('nombre_user') ?? "undefined");
+    
   }
 
   void setdDrawerListArray() {
@@ -116,7 +125,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Padding(
                     padding: const EdgeInsets.only(top: 8, left: 4),
                     child: Text(
-                      "Chris Hemsworth",
+                      usuario,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: AppTheme.grey,

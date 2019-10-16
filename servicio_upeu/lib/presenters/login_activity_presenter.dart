@@ -24,7 +24,9 @@ class LoginActivityPresenter implements LoginActivityInteractor {
   void login(String email, String password) async {
     await api.loginR(email, password).then((it) {
         Persona u = Persona.fromJson(it.data);
+        String temp=it.data.toString();
         this.success(u.nombres);
+        view?.toast("Resultado: $temp");
         view?.finish();
     }).catchError((e) {
       print("Exception $e");
