@@ -4,6 +4,8 @@ import 'package:servicio_upeu/models/post.dart';
 import 'package:servicio_upeu/presenters/main_activity_presenter.dart';
 import 'package:toast/toast.dart';
 import 'package:servicio_upeu/views/login_act.dart';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:flutter/services.dart';
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -15,6 +17,40 @@ class _MyHomePageState extends State<MyHomePage> implements MainActivityView {
   List<Post> posts = new List();
   List<DropdownMenuItem<String>> _dropDownMenuItems;
   String _currentCity;
+  String barcode= "Hey there !";
+  void _scan() async {
+    Toast.show("Lectura: Holas", context,
+      duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+    try {
+      String qrResult = await BarcodeScanner.scan();
+      setState(() {
+        barcode = qrResult;
+        Toast.show("Lectura: $barcode", context,duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);        
+      });
+    } on PlatformException catch (ex) {
+      if (ex.code == BarcodeScanner.CameraAccessDenied) {
+        setState(() {
+          barcode = "Camera permission was denied";
+          Toast.show("Lectura: $barcode", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+        });
+      } else {
+        setState(() {
+          barcode = "Unknown Error $ex";
+          Toast.show("Lectura: $barcode", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+        });
+      }
+    } on FormatException {
+      setState(() {
+        barcode = "You pressed the back button before scanning anything";
+        Toast.show("Lectura: $barcode", context,duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+      });
+    } catch (ex) {
+      setState(() {
+        barcode = "Unknown Error $ex";
+        Toast.show("Lectura: $barcode", context, duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+      });
+    }
+  }
 
   @override
   void initState() {
@@ -68,10 +104,7 @@ class _MyHomePageState extends State<MyHomePage> implements MainActivityView {
                         icon: Image.asset("assets/images/library-icon.png"),
                         label: Text(
                             'Evaluar Calidad Servicio'), //`Text` to display
-                        onPressed: () {
-                          //Code to execute when Floating Action Button is clicked
-                          //...
-                        },
+                        onPressed: ()=>_scan() 
                       ),
                     ),
                   ],
