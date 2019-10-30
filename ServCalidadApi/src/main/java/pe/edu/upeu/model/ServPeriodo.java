@@ -12,6 +12,8 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author davidmp
@@ -38,7 +40,7 @@ public class ServPeriodo implements Serializable {
     @Column(name = "estado_pe")
     private String estadoPe;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPeriodo")
+    @JsonIgnore
     private Collection<ServPuestoPeriodo> servPuestoPeriodoCollection;
 
- 
 }

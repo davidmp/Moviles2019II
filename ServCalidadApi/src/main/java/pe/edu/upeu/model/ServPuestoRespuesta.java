@@ -13,6 +13,8 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author davidmp
@@ -50,7 +52,7 @@ public class ServPuestoRespuesta implements Serializable {
     @ManyToOne(optional = false)
     private ServPersonaPuesto idPersonaPuesto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPuestoRespuesta")
+    @JsonIgnore
     private Collection<ServDetalleRespuesta> servDetalleRespuestaCollection;
 
- 
 }

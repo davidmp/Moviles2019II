@@ -13,6 +13,8 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author davidmp
@@ -62,6 +64,7 @@ public class ServPuesto implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPuesto")
+    @JsonIgnore
     private Collection<ServPuestoPeriodo> servPuestoPeriodoCollection;
     @JoinColumn(name = "id_nivel", referencedColumnName = "id_nivel")
     @ManyToOne(optional = false)
@@ -70,5 +73,4 @@ public class ServPuesto implements Serializable {
     @ManyToOne(optional = false)
     private ServSubarea idSubarea;
 
- 
 }
