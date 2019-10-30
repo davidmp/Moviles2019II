@@ -7,6 +7,8 @@ import 'package:resepmau_flutter/homeScreen.dart';
 import 'package:resepmau_flutter/inviteFriendScreen.dart';*/
 //import 'package:calidad_serv/views/register_act.dart';
 //import 'package:calidad_serv/views/feedbackScreen.dart';
+import 'package:servicio_upeu/views/lista_catcli.dart';
+
 import 'package:flutter/material.dart';
 
 class NavigationHomeScreen extends StatefulWidget {
@@ -56,7 +58,7 @@ class _NavigationHomeScreenState extends State<NavigationHomeScreen> {
       drawerIndex = drawerIndexdata;
       if (drawerIndex == DrawerIndex.HOME) {
         setState(() {
-          // screenView = MyHomePage();
+          screenView = ListViewJsonapi();
           //screenView = RegisterActivity();
         });
       } else if (drawerIndex == DrawerIndex.Help) {
