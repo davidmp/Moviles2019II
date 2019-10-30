@@ -3,10 +3,11 @@ import 'package:dio/dio.dart';
 import 'package:servicio_upeu/webservices/converters/wrapped_response.dart';
 import 'package:servicio_upeu/webservices/converters/wrapped_list_response.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:servicio_upeu/webservices/url_api.dart';
 
 part 'api_service.g.dart';
 
-@RestApi(baseUrl: "http://172.22.90.32:6060/")
+@RestApi(baseUrl: url_base)
 abstract class RestClient {
   factory RestClient(Dio dio) = _RestClient;
 

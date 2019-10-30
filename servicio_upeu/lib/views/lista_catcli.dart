@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:servicio_upeu/models/categoriacli.dart';
+import 'package:servicio_upeu/webservices/url_api.dart';
 
 class ListViewJsonapi extends StatefulWidget {
   _ListViewJsonapiState createState() => _ListViewJsonapiState();
 }
 
 class _ListViewJsonapiState extends State<ListViewJsonapi> {
-  final String uri = 'http://172.22.90.32:6060/catcli/listCatCli';
+  final String uri = url_base+'catcli/listCatCli';
 
   Future<List<CategoriaCliente>> _fetchUsers() async {
     var response = await http.get(uri);
