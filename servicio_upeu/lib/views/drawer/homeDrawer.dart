@@ -1,3 +1,4 @@
+import 'package:servicio_upeu/views/app_home.dart';
 import 'package:servicio_upeu/views/theme/appTheme.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,13 +25,22 @@ class _HomeDrawerState extends State<HomeDrawer> {
   void initState() {
     setdDrawerListArray();
     super.initState();
-    getUser();
+    setState(() {
+      getUser();
+    });
   }
 
   void getUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    usuario = (prefs.getString('nombre_user') ?? "undefined");
-    
+    usuario = (prefs.getString("nombre_user") ?? "undefined");
+    print("Nombre:" + usuario);
+  }
+
+  void logoutUser() async {
+    final pref = await SharedPreferences.getInstance();
+    await pref.clear();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => MyHomePage()));
   }
 
   void setdDrawerListArray() {
@@ -44,7 +54,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
         index: DrawerIndex.Help,
         labelName: 'Help',
         isAssetsImage: true,
-        imageName: "assets/images/supportIcon.png",
+        imageName: "assets/images/library-icon.png",
       ),
       DrawerList(
         index: DrawerIndex.FeedBack,
@@ -115,7 +125,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             child: ClipRRect(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(60.0)),
-                              child: Image.asset("assets/images/userImage.png"),
+                              child: Image.asset("assets/images/logo_upeu.png"),
                             ),
                           ),
                         ),
@@ -162,7 +172,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
             children: <Widget>[
               ListTile(
                 title: new Text(
-                  "Sign Out",
+                  "Salir",
                   style: new TextStyle(
                     fontFamily: AppTheme.fontName,
                     fontWeight: FontWeight.w600,
@@ -175,7 +185,9 @@ class _HomeDrawerState extends State<HomeDrawer> {
                   Icons.power_settings_new,
                   color: Colors.red,
                 ),
-                onTap: () {},
+                onTap: () {
+                  logoutUser();
+                },
               ),
               SizedBox(
                 height: MediaQuery.of(context).padding.bottom,

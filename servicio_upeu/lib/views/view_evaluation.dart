@@ -1,22 +1,29 @@
+import 'package:servicio_upeu/models/model_ultis/data_typeuser.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:servicio_upeu/interactor/login_activity_contract.dart';
 import 'package:servicio_upeu/presenters/login_activity_presenter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 //import 'package:calidad_serv/views/register_act.dart';
-
+import 'package:servicio_upeu/views/app_home.dart';
 import 'package:servicio_upeu/views/drawer/navigationHomeScreen.dart';
 
-class LoginActivity extends StatefulWidget {
+class EvaluationActivity extends StatefulWidget {
+  final DataTypeUser datos;
+  EvaluationActivity({Key key, @required this.datos}) : super(key: key);
+
   @override
-  _LoginActivityState createState() => _LoginActivityState();
+  _EvalActivityState createState() => _EvalActivityState(datos: datos);
 }
 
-class _LoginActivityState extends State<LoginActivity>
+class _EvalActivityState extends State<EvaluationActivity>
     implements LoginActivityView {
   LoginActivityPresenter presenter;
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final DataTypeUser datos;
+
+  _EvalActivityState({Key key1, @required this.datos});
 
   @override
   void initState() {
@@ -29,9 +36,7 @@ class _LoginActivityState extends State<LoginActivity>
       toast("La contraseña contiene al menos 8 caracteres.");
       return;
     }
-    setState(() {
-      presenter.login(email, password);
-    });
+    presenter.login(email, password);
   }
 
   @override
@@ -50,7 +55,8 @@ class _LoginActivityState extends State<LoginActivity>
                         EdgeInsets.only(left: 16.0, right: 16.0, top: 60.0),
                     child: Column(
                       children: <Widget>[
-                        Text("Sistema de Monitoreo de calidad de Atención",
+                        Text(
+                            "Sistema de Monitoreo de calidad de Atención: ${datos.typeUser} - ${datos.dataQR}",
                             style: TextStyle(
                                 color: Colors.redAccent,
                                 fontSize: 28.0,
@@ -200,12 +206,5 @@ class _LoginActivityState extends State<LoginActivity>
       duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
 
   @override
-  sucsseslogin(String data) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      prefs.setString("api_token", data);
-      prefs.setString("nombre_user", data);
-      //prefs.commit();
-    });
-  }
+  sucsseslogin(String data) async {}
 }

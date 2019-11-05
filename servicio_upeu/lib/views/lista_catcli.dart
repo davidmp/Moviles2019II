@@ -1,38 +1,41 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'package:servicio_upeu/interactor/categorcliente_activity_contract.dart';
 import 'package:servicio_upeu/models/categoriacli.dart';
-import 'package:servicio_upeu/webservices/url_api.dart';
+import 'package:servicio_upeu/presenters/categorcliente_activity_presenter.dart';
+import 'package:toast/toast.dart';
 
 class ListViewJsonapi extends StatefulWidget {
   _ListViewJsonapiState createState() => _ListViewJsonapiState();
 }
 
-class _ListViewJsonapiState extends State<ListViewJsonapi> {
-  final String uri = url_base+'catcli/listCatCli';
-
-  Future<List<CategoriaCliente>> _fetchUsers() async {
-    var response = await http.get(uri);
-
-    if (response.statusCode == 200) {
-      final items = json.decode(response.body).cast<Map<String, dynamic>>();
-      List<CategoriaCliente> listOfUsers = items.map<CategoriaCliente>((json) {
-        return CategoriaCliente.fromJson(json);
-      }).toList();
-
-      return listOfUsers;
-    } else {
-      throw Exception('Failed to load internet');
-    }
+class _ListViewJsonapiState extends State<ListViewJsonapi>
+    implements CategorClienteActivityView {
+  CategorClienteActivityPresenter presenter;
+  Future<List<CategoriaCliente>> lista;
+  @override
+  void initState() {
+    presenter = CategorClienteActivityPresenter(this);
+    setState(() {
+      lista = presenter.listCatgorCli();
+    });
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Lista de Categoria Cliente"),
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.search), onPressed: () {}),
+          new IconButton(icon: new Icon(Icons.more_vert), onPressed: () {})
+        ],
+      ),
       body: FutureBuilder<List<CategoriaCliente>>(
-        future: _fetchUsers(),
+        future: lista,
         builder: (context, snapshot) {
-          if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+          if (!snapshot.hasData)
+            return Center(child: CircularProgressIndicator());
 
           return ListView(
             padding: EdgeInsets.only(top: 60),
@@ -55,4 +58,8 @@ class _ListViewJsonapiState extends State<ListViewJsonapi> {
       ),
     );
   }
+
+  @override
+  void toast(String message) => Toast.show(message, context,
+      duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
 }
