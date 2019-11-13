@@ -26,7 +26,7 @@ class _RestCategorCli implements RestCategorCli {
     var value = _result.data
         .map(
             (dynamic i) => CategoriaCliente.fromJson(i as Map<String, dynamic>))
-        .toList();    
+        .toList();
     print(value.length);
     return Future.value(value);
   }
